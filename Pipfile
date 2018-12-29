@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask-restplus = "*"
+flask-sqlalchemy = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+
+[dev-packages]
+"flake8" = "*"
+rope = "*"
+mysqlclient = "*"
+
+[requires]
+python_version = "3.6"
