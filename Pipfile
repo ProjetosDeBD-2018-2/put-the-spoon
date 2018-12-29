@@ -8,11 +8,11 @@ flask-restplus = "*"
 flask-sqlalchemy = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+mysqlclient = "*"
 
 [dev-packages]
 "flake8" = "*"
 rope = "*"
-mysqlclient = "*"
 
 [requires]
 python_version = "3.6"
