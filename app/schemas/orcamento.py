@@ -1,18 +1,14 @@
 from app.extensions import db
 
 
-class Despesas(db.Model):
-    __tablename__ = 'Despesas'
+class Orcamento(db.Model):
+    __tablename__ = 'Orcamento'
     id = db.Column(db.INT(), primary_key=True)
-    ano_mes_lancamento = db.Column(db.NVARCHAR(500))
+    exercicio = db.Column(db.NVARCHAR(500))
     codigo_orgao_superior = db.Column(db.NVARCHAR(500))
     nome_orgao_superior = db.Column(db.NVARCHAR(500))
     codigo_orgao_subordinado = db.Column(db.NVARCHAR(500))
     nome_orgao_subordinado = db.Column(db.NVARCHAR(500))
-    codigo_unidade_gestora = db.Column(db.NVARCHAR(500))
-    nome_unidade_gestora = db.Column(db.NVARCHAR(500))
-    codigo_gestao = db.Column(db.NVARCHAR(500))
-    nome_gestao = db.Column(db.NVARCHAR(500))
     codigo_unidade_orcamentaria = db.Column(db.NVARCHAR(500))
     nome_unidade_orcamentaria = db.Column(db.NVARCHAR(500))
     codigo_funcao = db.Column(db.NVARCHAR(500))
@@ -23,6 +19,13 @@ class Despesas(db.Model):
     nome_programa_orcamentario = db.Column(db.NVARCHAR(500))
     codigo_acao = db.Column(db.NVARCHAR(500))
     nome_acao = db.Column(db.NVARCHAR(500))
-    idTipoDespesa = db.Column(db.NVARCHAR(500))
-    idRubrica = db.Column(db.INT())
+    codigo_categoria_economica = db.Column(db.NVARCHAR(500))
+    nome_categoria_economica = db.Column(db.NVARCHAR(500))
+    codigo_grupo_de_despesa = db.Column(db.NVARCHAR(500))
+    nome_grupo_de_despesa = db.Column(db.NVARCHAR(500))
+    codigo_elemento_de_despesa = db.Column(db.NVARCHAR(500))
+    nome_elemento_de_despesa = db.Column(db.NVARCHAR(500))
+    orcamento_inicial = db.Column(db.FLOAT())
+    orcamento_atualizado = db.Column(db.FLOAT())
+    orcamento_realizado = db.Column(db.FLOAT())
     idIes = db.Column(db.INT())
