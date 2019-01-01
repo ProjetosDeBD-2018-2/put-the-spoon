@@ -9,8 +9,7 @@ from app.schemas.tipoDespesa import TipoDespesa
 from app.schemas.rubrica import Rubrica
 
 from app.schemas.serializers import IesSerialized
-from app.schemas.serializers import IesHighestExpenseByType
-from app.schemas.serializers import IesLowestExpenseByType
+from app.schemas.serializers import IesExpenseByType
 from app.schemas.serializers import RelationshipBetweenExpensesAndRatings
 
 ies = Namespace('Ies')
@@ -66,13 +65,13 @@ class RelationshipExpensesAndRatings(Resource):
         return jsonify(output)
 
 
-@ies.route('/HighestExpenseByType/<int:year>/<int:typex>')
-class HighestExpenseByType(Resource):
-    def get(self, year, typex):
-        result = Ies.query.with_entities(
+@ies.route('/ExpenseByType/<int:year>/<int:typex>/<string:order>')
+class ExpenseByType(Resource):
+    def get(self, year, typex, order):
+        query = Ies.query.with_entities(
             Despesas.idTipoDespesa,
             Despesas.idIes,
-            func.sum(Rubrica.valor_pago_reais).label('maximo')
+            func.sum(Rubrica.valor_pago_reais).label('total')
         ).filter(
             Despesas.id == Rubrica.id_despesa,
             Despesas.idTipoDespesa == TipoDespesa.id,
@@ -81,34 +80,16 @@ class HighestExpenseByType(Resource):
         ).group_by(
             Despesas.idTipoDespesa,
             Despesas.idIes
-        ).order_by(
-            func.sum(Rubrica.valor_pago_reais).desc()
-        ).all()
+        )
 
-        serialized_schema = IesHighestExpenseByType(many=True)
-        output = serialized_schema.dump(result).data
-        return jsonify(output)
+        if (order == 'desc'):
+            query = query.order_by(func.sum(Rubrica.valor_pago_reais).desc())
+        elif (order == 'asc'):
+            query = query.order_by(func.sum(Rubrica.valor_pago_reais).asc())
+        else:
+            return ies.abort(400, 'Order type not valid')
 
-
-@ies.route('/LowestExpenseByType/<int:year>/<int:typex>')
-class LowestExpenseByType(Resource):
-    def get(self, year, typex):
-        result = Ies.query.with_entities(
-            Despesas.idTipoDespesa,
-            Despesas.idIes,
-            func.sum(Rubrica.valor_pago_reais).label('minimo')
-        ).filter(
-            Despesas.id == Rubrica.id_despesa,
-            Despesas.idTipoDespesa == TipoDespesa.id,
-            Despesas.idTipoDespesa == typex,
-            Despesas.ano_mes_lancamento.like(f"{year}%")
-        ).group_by(
-            Despesas.idTipoDespesa,
-            Despesas.idIes
-        ).order_by(
-            func.sum(Rubrica.valor_pago_reais).asc()
-        ).all()
-
-        serialized_schema = IesLowestExpenseByType(many=True)
+        result = query.all()
+        serialized_schema = IesExpenseByType(many=True)
         output = serialized_schema.dump(result).data
         return jsonify(output)

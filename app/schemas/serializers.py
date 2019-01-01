@@ -2,6 +2,7 @@ from app.extensions import ma
 
 from .ies import Ies
 from .nota import Nota
+from .orcamento import Orcamento
 
 
 class IesSerialized(ma.ModelSchema):
@@ -12,6 +13,11 @@ class IesSerialized(ma.ModelSchema):
 class NotaSerialized(ma.ModelSchema):
     class Meta:
         model = Nota
+
+
+class OrcamentoSerialized(ma.ModelSchema):
+    class Meta:
+        model = Orcamento
 
 
 class AverageRatingsByRegion(ma.Schema):
@@ -33,11 +39,11 @@ class RelationshipBetweenExpensesAndRatings(ma.Schema):
         )
 
 
-class IesHighestExpenseByType(ma.Schema):
+class IesExpenseByType(ma.Schema):
     class Meta:
-        fields = ('idTipoDespesa', 'idIes', 'maximo')
+        fields = ('idTipoDespesa', 'idIes', 'total')
 
 
-class IesLowestExpenseByType(ma.Schema):
+class Teste(ma.Schema):
     class Meta:
-        fields = ('idTipoDespesa', 'idIes', 'minimo')
+        fields = ('idIes', 'nome_ies', 'orcamento', 'despesaTotal')
