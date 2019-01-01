@@ -1,30 +1,30 @@
-from flask import jsonify
 from sqlalchemy.sql import func
 
 from flask_restplus import Namespace, Resource
 
 from app.schemas.nota import Nota
+from app.schemas.nota import AverageRatingsByRegion
 from app.schemas.endereco import Endereco
 
-from app.schemas.serializers import NotaSerialized
-from app.schemas.serializers import AverageRatingsByRegion
+from app.routes.apiv1.serializers import nota_model
+from app.routes.apiv1.serializers import values_by_region
 
 nota = Namespace('Notas')
 
 
 @nota.route('/getAll')
 class GetAllNotas(Resource):
+    @nota.marshal_list_with(nota_model)
     def get(self):
-        notas = Nota.query.all()
-        serialized_schema = NotaSerialized(many=True)
-        output = serialized_schema.dump(notas).data
-        return jsonify(output)
+        result = Nota.query.all()
+        return result
 
 
 @nota.route('/AverageByRegion/<int:year>')
 class AverageRegion(Resource):
+    @nota.marshal_list_with(values_by_region)
     def get(self, year):
-        notas = \
+        result = \
             Nota.query.with_entities(
                 Endereco.regiaoIes,
                 func.avg(Nota.igcContinuo).label('total')
@@ -36,5 +36,5 @@ class AverageRegion(Resource):
             ).all()
 
         serialized_schema = AverageRatingsByRegion(many=True)
-        output = serialized_schema.dump(notas).data
-        return jsonify(output)
+        output = serialized_schema.dump(result).data
+        return output

@@ -1,4 +1,5 @@
 import os
+import ast
 
 import app as app_root
 
@@ -14,3 +15,8 @@ class BaseConfig(object):
     DATABASE CONFIG
     '''
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URI']
+
+    '''
+    FLASK RESTPLUS CONFIG
+    '''
+    RESTPLUS_MASK_SWAGGER = ast.literal_eval(os.environ['MASK_SWAGGER'])

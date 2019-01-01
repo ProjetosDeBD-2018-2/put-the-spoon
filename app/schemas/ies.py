@@ -1,4 +1,5 @@
 from app.extensions import db
+from app.extensions import ma
 
 
 class Ies(db.Model):
@@ -11,3 +12,21 @@ class Ies(db.Model):
     cod_mantenedora = db.Column(db.Integer())
     email_ies = db.Column(db.Text())
     site_ies = db.Column(db.Text())
+
+
+class ExpenseByTypeSchema(ma.Schema):
+    class Meta:
+        fields = ('idTipoDespesa', 'idIes', 'total')
+
+
+class ExpensesAndRatingsSchema(ma.Schema):
+    class Meta:
+        fields = (
+            'idIes',
+            'nome_ies',
+            'idNota',
+            'igcContinuo',
+            'idTipoDespesa',
+            'tipo_despesa',
+            'DespesaTotal'
+        )

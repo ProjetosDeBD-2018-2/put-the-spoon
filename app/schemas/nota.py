@@ -1,4 +1,5 @@
 from app.extensions import db
+from app.extensions import ma
 
 
 class Nota(db.Model):
@@ -8,3 +9,8 @@ class Nota(db.Model):
     idIes = db.Column(db.INT())
     igcContinuo = db.Column(db.NVARCHAR(500))
     igcFaixa = db.Column(db.NVARCHAR(500))
+
+
+class AverageRatingsByRegion(ma.Schema):
+    class Meta:
+        fields = ('regiaoIes', 'total')

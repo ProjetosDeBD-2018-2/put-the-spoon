@@ -1,4 +1,5 @@
 from app.extensions import db
+from app.extensions import ma
 
 
 class Orcamento(db.Model):
@@ -29,3 +30,8 @@ class Orcamento(db.Model):
     orcamento_atualizado = db.Column(db.FLOAT())
     orcamento_realizado = db.Column(db.FLOAT())
     idIes = db.Column(db.INT())
+
+
+class Teste(ma.Schema):
+    class Meta:
+        fields = ('idIes', 'nome_ies', 'orcamento', 'despesaTotal')

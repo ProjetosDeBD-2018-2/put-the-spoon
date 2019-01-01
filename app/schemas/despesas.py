@@ -1,4 +1,5 @@
 from app.extensions import db
+from app.extensions import ma
 
 
 class Despesas(db.Model):
@@ -26,3 +27,8 @@ class Despesas(db.Model):
     idTipoDespesa = db.Column(db.NVARCHAR(500))
     idRubrica = db.Column(db.INT())
     idIes = db.Column(db.INT())
+
+
+class RegionsWithExpenses(ma.Schema):
+    class Meta:
+        fields = ('regiaoIes', 'total')
