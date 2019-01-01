@@ -12,7 +12,7 @@ from app.routes.apiv1.serializers import expense_and_budget
 orcamento = Namespace('Orcamento')
 
 
-@orcamento.route('/HighestExpenseByType/<int:year>/<string:order>')
+@orcamento.route('/ExpenseAndBudget/<int:year>/<string:order>')
 class HighestExpenseByType(Resource):
     @orcamento.marshal_list_with(expense_and_budget)
     @orcamento.doc(responses={400: 'Invalid input'})
