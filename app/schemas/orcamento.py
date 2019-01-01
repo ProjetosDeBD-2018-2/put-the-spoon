@@ -32,6 +32,6 @@ class Orcamento(db.Model):
     idIes = db.Column(db.INT())
 
 
-class Teste(ma.Schema):
+class HighestExpenseByTypeDespesa(ma.Schema):
     class Meta:
-        fields = ('idIes', 'nome_ies', 'orcamento', 'despesaTotal')
+        fields = ('idIes', 'nome_ies', 'orcamento', 'total')

@@ -40,3 +40,10 @@ values_by_region = Model('ValuesByRegion', {
     'regiaoIes': fields.String,
     'total': fields.Float
 })
+
+highest_expense_by_type = Model('HighestExpenseByType', {
+    'idIes': fields.Integer,
+    'nome_ies': fields.String,
+    'orcamento': fields.Float,
+    'total': fields.Float
+})
