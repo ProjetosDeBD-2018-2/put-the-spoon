@@ -41,7 +41,7 @@ values_by_region = Model('ValuesByRegion', {
     'total': fields.Float
 })
 
-highest_expense_by_type = Model('HighestExpenseByType', {
+expense_and_budget = Model('HighestExpenseByType', {
     'idIes': fields.Integer,
     'nome_ies': fields.String,
     'orcamento': fields.Float,

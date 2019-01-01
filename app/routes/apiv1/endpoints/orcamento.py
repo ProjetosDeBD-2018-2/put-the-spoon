@@ -7,14 +7,14 @@ from app.schemas.ies import Ies
 from app.schemas.despesas import Despesas
 from app.schemas.rubrica import Rubrica
 
-from app.routes.apiv1.serializers import highest_expense_by_type
+from app.routes.apiv1.serializers import expense_and_budget
 
 orcamento = Namespace('Orcamento')
 
 
 @orcamento.route('/HighestExpenseByType/<int:year>/<string:order>')
 class HighestExpenseByType(Resource):
-    @orcamento.marshal_list_with(highest_expense_by_type)
+    @orcamento.marshal_list_with(expense_and_budget)
     @orcamento.doc(responses={400: 'Invalid input'})
     def get(self, year, order):
         subquery = \

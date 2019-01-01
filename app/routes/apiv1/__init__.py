@@ -11,7 +11,7 @@ from .serializers import expense_by_type
 from .serializers import expenses_and_ratings
 from .serializers import nota_model
 from .serializers import values_by_region
-from .serializers import highest_expense_by_type
+from .serializers import expense_and_budget
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api/1')
 
@@ -31,4 +31,4 @@ api.models[expense_by_type.name] = expense_by_type
 api.models[expenses_and_ratings.name] = expenses_and_ratings
 api.models[nota_model.name] = nota_model
 api.models[values_by_region.name] = values_by_region
-api.models[highest_expense_by_type.name] = highest_expense_by_type
+api.models[expense_and_budget.name] = expense_and_budget
