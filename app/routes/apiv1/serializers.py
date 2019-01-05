@@ -38,7 +38,7 @@ expenses_and_ratings = Model('ExpensesAndRatings', {
     'DespesaTotal': fields.Float
 })
 
-values_by_region = Model('ValuesByRegion', {
+values_by_region_rating = Model('ValuesByRegionRating', {
     'regiaoIes': fields.String,
     'nota': fields.Float
 })
