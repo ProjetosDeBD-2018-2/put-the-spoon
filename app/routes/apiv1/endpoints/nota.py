@@ -7,7 +7,7 @@ from app.schemas.nota import AverageRatingsByRegion
 from app.schemas.endereco import Endereco
 
 from app.routes.apiv1.serializers import nota_model
-from app.routes.apiv1.serializers import values_by_region
+from app.routes.apiv1.serializers import values_by_region_rating
 
 nota = Namespace('Notas')
 
@@ -22,7 +22,7 @@ class GetAllNotas(Resource):
 
 @nota.route('/AverageByRegion/<int:year>')
 class AverageRegion(Resource):
-    @nota.marshal_list_with(values_by_region)
+    @nota.marshal_list_with(values_by_region_rating)
     def get(self, year):
         result = \
             Nota.query.with_entities(

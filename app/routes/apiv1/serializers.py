@@ -43,6 +43,11 @@ values_by_region = Model('ValuesByRegion', {
     'nota': fields.Float
 })
 
+values_by_region = Model('ValuesByRegion', {
+    'regiaoIes': fields.String,
+    'despesa': fields.Float
+})
+
 expense_and_budget = Model('ExpenseAndBudget', {
     'idIes': fields.Integer,
     'nome_ies': fields.String,
