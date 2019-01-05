@@ -19,7 +19,7 @@ class ExpensesByRegions(Resource):
         notas = \
             Despesas.query.with_entities(
                 Endereco.regiaoIes,
-                func.sum(Rubrica.valor_pago_reais).label('total')
+                func.sum(Rubrica.valor_pago_reais).label('despesa')
             ).filter(
                 Despesas.id == Rubrica.id_despesa,
                 Despesas.ano_mes_lancamento.like(f"{year}%"),

@@ -31,4 +31,4 @@ class Despesas(db.Model):
 
 class RegionsWithExpenses(ma.Schema):
     class Meta:
-        fields = ('regiaoIes', 'total')
+        fields = ('regiaoIes', 'despesa')

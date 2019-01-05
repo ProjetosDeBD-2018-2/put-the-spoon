@@ -22,8 +22,10 @@ nota_model = Model('Nota', {
 
 expense_by_type = Model('ExpenseByType', {
     'idIes': fields.Integer,
+    'nome_ies': fields.String,
     'idTipoDespesa': fields.String,
-    'total': fields.Float
+    'tipo_despesa': fields.String,
+    'despesa': fields.Float
 })
 
 expenses_and_ratings = Model('ExpensesAndRatings', {
@@ -38,12 +40,12 @@ expenses_and_ratings = Model('ExpensesAndRatings', {
 
 values_by_region = Model('ValuesByRegion', {
     'regiaoIes': fields.String,
-    'total': fields.Float
+    'despesa': fields.Float
 })
 
 expense_and_budget = Model('ExpenseAndBudget', {
     'idIes': fields.Integer,
     'nome_ies': fields.String,
     'orcamento': fields.Float,
-    'total': fields.Float
+    'despesa': fields.Float
 })

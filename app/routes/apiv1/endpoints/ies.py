@@ -74,17 +74,21 @@ class ExpenseByType(Resource):
     def get(self, year, typex, order):
         query = \
             Ies.query.with_entities(
+                Ies.nome_ies,
                 Despesas.idTipoDespesa,
+                TipoDespesa.tipo_despesa,
                 Despesas.idIes,
-                func.sum(Rubrica.valor_pago_reais).label('total')
+                func.sum(Rubrica.valor_pago_reais).label('despesa')
             ).filter(
                 Despesas.id == Rubrica.id_despesa,
                 Despesas.idTipoDespesa == TipoDespesa.id,
                 Despesas.idTipoDespesa == typex,
                 Despesas.ano_mes_lancamento.like(f"{year}%")
             ).group_by(
+                Ies.nome_ies,
                 Despesas.idTipoDespesa,
-                Despesas.idIes
+                Despesas.idIes,
+                TipoDespesa.tipo_despesa
             )
 
         if (order == 'desc'):

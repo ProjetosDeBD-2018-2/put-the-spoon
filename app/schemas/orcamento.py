@@ -34,4 +34,4 @@ class Orcamento(db.Model):
 
 class HighestExpenseByTypeDespesa(ma.Schema):
     class Meta:
-        fields = ('idIes', 'nome_ies', 'orcamento', 'total')
+        fields = ('idIes', 'nome_ies', 'orcamento', 'despesa')

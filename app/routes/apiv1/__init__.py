@@ -1,4 +1,6 @@
-from flask import Blueprint
+import os
+
+from flask import Blueprint, config
 from flask_restplus import Api
 
 from .endpoints.ies import ies
@@ -13,13 +15,14 @@ from .serializers import nota_model
 from .serializers import values_by_region
 from .serializers import expense_and_budget
 
-api_v1 = Blueprint('api', __name__, url_prefix='/api/1')
+default_title = 'Put The Spoon API'
+default_version = '1.0'
 
+api_v1 = Blueprint('api', __name__, url_prefix='/api/1')
 api = Api(api_v1,
-          title='My Title',
-          version='1.0',
-          description='A description',
-          )
+    title=os.getenv('TITLE', default_title),
+    version=os.getenv('VERSION', default_version)
+)
 
 api.add_namespace(ies)
 api.add_namespace(nota)

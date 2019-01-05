@@ -21,7 +21,7 @@ class HighestExpenseByType(Resource):
             Orcamento.query.with_entities(
                 Despesas.idIes,
                 func.sum(Orcamento.orcamento_atualizado).label('orcamento'),
-                func.sum(Rubrica.valor_pago_reais).label('total')
+                func.sum(Rubrica.valor_pago_reais).label('despesa')
             ).filter(
                 Orcamento.exercicio == year,
                 Despesas.ano_mes_lancamento.like(f"{year}%"),
@@ -36,18 +36,18 @@ class HighestExpenseByType(Resource):
                 subquery.columns.idIes,
                 Ies.nome_ies,
                 subquery.columns.orcamento,
-                subquery.columns.total
+                subquery.columns.despesa
             )
 
         if (order == 'greater'):
             query = query.filter(
                 subquery.columns.idIes == Ies.cod_ies,
-                subquery.columns.total > subquery.columns.orcamento
+                subquery.columns.despesa > subquery.columns.orcamento
             )
         elif (order == 'smaller'):
             result = query.filter(
                 subquery.columns.idIes == Ies.cod_ies,
-                subquery.columns.total < subquery.columns.orcamento
+                subquery.columns.despesa < subquery.columns.orcamento
             )
         else:
             return orcamento.abort(400)
