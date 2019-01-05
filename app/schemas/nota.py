@@ -13,4 +13,4 @@ class Nota(db.Model):
 
 class AverageRatingsByRegion(ma.Schema):
     class Meta:
-        fields = ('regiaoIes', 'total')
+        fields = ('regiaoIes', 'nota')

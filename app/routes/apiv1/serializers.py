@@ -40,7 +40,7 @@ expenses_and_ratings = Model('ExpensesAndRatings', {
 
 values_by_region = Model('ValuesByRegion', {
     'regiaoIes': fields.String,
-    'despesa': fields.Float
+    'nota': fields.Float
 })
 
 expense_and_budget = Model('ExpenseAndBudget', {

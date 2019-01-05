@@ -27,7 +27,7 @@ class AverageRegion(Resource):
         result = \
             Nota.query.with_entities(
                 Endereco.regiaoIes,
-                func.avg(Nota.igcContinuo).label('total')
+                func.avg(Nota.igcContinuo).label('nota')
             ).filter(
                 Nota.idIes == Endereco.cod_ies,
                 Nota.anoNota == year
