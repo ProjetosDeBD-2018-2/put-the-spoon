@@ -10,7 +10,7 @@
             "request": "launch",
             "stopOnEntry": false,
             "module": "flask",
-            "envFile": "${workspaceFolder}/dev.env",
+            "envFile": "${workspaceFolder}/.env",
             "args": [
                 "run",
                 "--no-debugger",
