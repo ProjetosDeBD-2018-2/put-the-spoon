@@ -14,9 +14,9 @@ class BaseConfig(object):
     '''
     DATABASE CONFIG
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URI']
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', None)
 
     '''
     FLASK RESTPLUS CONFIG
     '''
-    RESTPLUS_MASK_SWAGGER = ast.literal_eval(os.environ['MASK_SWAGGER'])
+    RESTPLUS_MASK_SWAGGER = ast.literal_eval(os.getenv('MASK_SWAGGER', 'False'))

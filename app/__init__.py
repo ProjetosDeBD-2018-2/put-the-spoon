@@ -2,6 +2,7 @@ from flask import Flask
 
 from app import configuration
 from app.routes.apiv1 import api_v1
+from app.routes.default_api import default_api
 
 from app.extensions import db
 from app.extensions import ma
@@ -18,6 +19,7 @@ def create_app(config=configuration.BaseConfig):
 
 def register_blueprint(application):
     application.register_blueprint(api_v1)
+    application.register_blueprint(default_api)
 
 
 def register_extensions(application):
