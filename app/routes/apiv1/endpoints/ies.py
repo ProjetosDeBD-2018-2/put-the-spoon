@@ -85,20 +85,7 @@ class ExpenseBy(Resource):
             ).group_by(
                 Despesas.idTipoDespesa,
                 Despesas.idIes
-            )
-
-        if (order == 'desc'):
-            subquery = \
-                subquery.order_by(
-                        func.sum(Rubrica.valor_pago_reais).desc()
-                    ).subquery('subquery')
-        elif (order == 'asc'):
-            subquery = \
-                subquery.order_by(
-                        func.sum(Rubrica.valor_pago_reais).asc()
-                    ).subquery('subquery')
-        else:
-            return ies.abort(400)
+            ).subquery('subquery')
 
         query = \
             Ies.query.with_entities(
@@ -110,6 +97,13 @@ class ExpenseBy(Resource):
             ).filter(
                 subquery.columns.idIes == Ies.cod_ies
             )
+
+        if (order == 'desc'):
+            query = query.order_by("subquery.despesa_total desc")
+        elif (order == 'asc'):
+            query = query.order_by("subquery.despesa_total asc")
+        else:
+            return ies.abort(400)
 
         result = query.all()
         serialized_schema = ExpenseByTypeSchema(many=True)
