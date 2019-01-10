@@ -1,4 +1,4 @@
-# Dashboard Put The Spoon
+# Put The Spoon
 
 <img src="https://github.com/jmontejr/dashboard-putthespoon/blob/master/assets/img/logo_putthespoon.png" width="500">
 
