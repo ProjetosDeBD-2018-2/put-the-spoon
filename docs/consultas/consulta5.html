@@ -247,35 +247,15 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 
+<!-- Call GET Method API Put The Spoon -->
+<script src="../assets/js/consultas.js"></script>
+
 <script type="text/javascript">
     
     $(document).ready(function () {
 
-        var base_url = "https://putthespoon-api.herokuapp.com/api/1/Ies/ExpenseByType/" + $_GET.consulta5Ano + "/" + $_GET.consulta5TipoDespesa;
-
-        function chamadaAPI(url_, order){
-            $.ajax({
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': 'true'
-                },
-                type: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                crossDomain: true,
-                url: url_ + "/" + order,
-                
-                success: function (data) {
-                    criarGrafico(data, order);
-                },
-                error: function (e) {
-                    console.log("Error: ", e);
-                }
-            });
-        }
-                
-        chamadaAPI(base_url, "asc");
-        chamadaAPI(base_url, "desc");
+        Consultas.requestGet("criarGrafico", "/Ies/ExpenseByType", $_GET.consulta5Ano, $_GET.consulta5TipoDespesa, "asc");
+        Consultas.requestGet("criarGrafico", "/Ies/ExpenseByType", $_GET.consulta5Ano, $_GET.consulta5TipoDespesa, "desc");
 
     });
 
@@ -283,27 +263,6 @@
 
         var labels_nome = [];
         var series_valores = [];
-        /* var byDespesa = dados.slice(0);
-
-        switch (order) {
-            case 'asc':
-                byDespesa = byDespesa.sort(function (a, b) {
-                    return a.despesa_total - b.despesa_total;
-                });
-                break;
-            case 'desc':
-                byDespesa = byDespesa.sort(function (b, a) {
-                    return a.despesa_total - b.despesa_total;
-                });
-                break;
-        }
-
-        byDespesa.forEach(element => {
-
-            labels_nome.push(element.sigla_ies);
-            series_valores.push(element.despesa_total);
-
-        }); */
 
         dados.forEach(element => {
 
