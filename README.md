@@ -2,9 +2,7 @@
 
 <img src="https://github.com/jmontejr/dashboard-putthespoon/blob/master/assets/img/logo_putthespoon.png" width="500">
 
-O Dashboard Put The Spoon é uma plataforma para consultas sobre as Despesas e Orçamentos das Instituições de Ensino Superior (IES) Públicas Federais. 
-
-O Put The Spoon é um projeto de cunho social desenvolvido para a disciplina Projeto de Banco de Dados do curso de Bacharelado em Sistemas de Informação da Universidade Federal Rural de Pernambuco (UFRPE - BR).
+O Put The Spoon é uma plataforma para consultas sobre as Despesas e Orçamentos das Instituições de Ensino Superior (IES) Públicas Federais. Sendo um projeto de cunho social desenvolvido para a disciplina Projeto de Banco de Dados do curso de Bacharelado em Sistemas de Informação da Universidade Federal Rural de Pernambuco (UFRPE - BR).
 
 ## Links:
 
