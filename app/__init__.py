@@ -6,6 +6,7 @@ from app.routes.default_api import default_api
 
 from app.extensions import db
 from app.extensions import ma
+from app.extensions import cors
 
 
 def create_app(config=configuration.BaseConfig):
@@ -25,3 +26,4 @@ def register_blueprint(application):
 def register_extensions(application):
     db.init_app(application)
     ma.init_app(application)
+    cors.init_app(application)

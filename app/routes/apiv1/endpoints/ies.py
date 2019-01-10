@@ -1,4 +1,4 @@
-from sqlalchemy.sql import func, asc, desc
+from sqlalchemy.sql import func
 from flask_restplus import Namespace, Resource
 
 from app.schemas.ies import Ies
@@ -65,9 +65,11 @@ class RelationshipExpensesAndRatings(Resource):
         output = serialized_schema.dump(result).data
         return output
 
-"""
+
 @ies.route('/Expense/<int:year>/<int:typex>/<string:order>')
 class ExpenseBy(Resource):
+    @ies.marshal_list_with(expense_by_type)
+    @ies.doc(responses={400: 'Invalid input'})
     def get(self, year, typex, order):
         subquery = \
             Despesas.query.with_entities(
@@ -81,20 +83,20 @@ class ExpenseBy(Resource):
                 Despesas.idTipoDespesa == typex,
                 Despesas.ano_mes_lancamento.like(f"{year}%")
             ).group_by(
-                Despesas.idIes,
+                Despesas.idTipoDespesa,
                 Despesas.idIes
             )
 
         if (order == 'desc'):
-            query = \
+            subquery = \
                 subquery.order_by(
-                    func.sum(Rubrica.valor_pago_reais
-                ).desc()).subquery('subquery')
+                        func.sum(Rubrica.valor_pago_reais).desc()
+                    ).subquery('subquery')
         elif (order == 'asc'):
-            query = \
+            subquery = \
                 subquery.order_by(
-                    func.sum(Rubrica.valor_pago_reais
-                ).asc()).subquery('subquery')
+                        func.sum(Rubrica.valor_pago_reais).asc()
+                    ).subquery('subquery')
         else:
             return ies.abort(400)
 
@@ -106,45 +108,8 @@ class ExpenseBy(Resource):
                 Ies.sigla_ies,
                 subquery.columns.despesa_total
             ).filter(
-                subquery.columns.idIes == 
+                subquery.columns.idIes == Ies.cod_ies
             )
-
-        result = query.all()
-        serialized_schema = HighestExpenseByTypeDespesa(many=True)
-        output = serialized_schema.dump(result).data
-        return output
-"""
-
-@ies.route('/ExpenseByType/<int:year>/<int:typex>/<string:order>')
-class ExpenseByType(Resource):
-    @ies.marshal_list_with(expense_by_type)
-    @ies.doc(responses={400: 'Invalid input'})
-    def get(self, year, typex, order):
-        query = \
-            Ies.query.with_entities(
-                Ies.nome_ies,
-                Despesas.idTipoDespesa,
-                TipoDespesa.tipo_despesa,
-                Despesas.idIes,
-                func.sum(Rubrica.valor_pago_reais).label('despesa')
-            ).filter(
-                Despesas.id == Rubrica.id_despesa,
-                Despesas.idTipoDespesa == TipoDespesa.id,
-                Despesas.idTipoDespesa == typex,
-                Despesas.ano_mes_lancamento.like(f"{year}%")
-            ).group_by(
-                Ies.nome_ies,
-                Despesas.idTipoDespesa,
-                Despesas.idIes,
-                TipoDespesa.tipo_despesa
-            )
-
-        if (order == 'desc'):
-            query = query.order_by(func.sum(Rubrica.valor_pago_reais).desc())
-        elif (order == 'asc'):
-            query = query.order_by(func.sum(Rubrica.valor_pago_reais).asc())
-        else:
-            return ies.abort(400)
 
         result = query.all()
         serialized_schema = ExpenseByTypeSchema(many=True)

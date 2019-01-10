@@ -17,11 +17,11 @@ class Ies(db.Model):
 class ExpenseByTypeSchema(ma.Schema):
     class Meta:
         fields = (
-            'idIes',
-            'nome_ies',
             'idTipoDespesa',
             'tipo_despesa',
-            'despesa'
+            'nome_ies',
+            'sigla_ies',
+            'despesa_total'
         )
 
 

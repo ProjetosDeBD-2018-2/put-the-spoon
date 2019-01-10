@@ -21,11 +21,11 @@ nota_model = Model('Nota', {
 })
 
 expense_by_type = Model('ExpenseByType', {
-    'idIes': fields.Integer,
-    'nome_ies': fields.String,
     'idTipoDespesa': fields.String,
     'tipo_despesa': fields.String,
-    'despesa': fields.Float
+    'nome_ies': fields.String,
+    'sigla_ies': fields.String,
+    'despesa_total': fields.Float
 })
 
 expenses_and_ratings = Model('ExpensesAndRatings', {
