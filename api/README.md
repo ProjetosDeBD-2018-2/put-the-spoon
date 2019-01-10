@@ -4,7 +4,7 @@
 
 O projeto foi desenvolvido usando a versão `3.6.5` do Python.
 
-1. Antes de rodar o projeto é necessario subir o [banco do projeto] no MySQl(https://drive.google.com/file/d/1BJnbRitA4UF1svHUUz2Gv0jsIAYkYhlR/view?usp=sharing), execute o comando:
+1. Antes de rodar o projeto é necessario subir o [banco do projeto](https://drive.google.com/file/d/1BJnbRitA4UF1svHUUz2Gv0jsIAYkYhlR/view?usp=sharing) no MySQl, execute o comando:
 
 ```
 mysql -u root putthespoon_dev < backup_db.sql
