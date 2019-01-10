@@ -1,4 +1,5 @@
 # Dashboard Put The Spoon
+[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
 ### O que está incluso:
 

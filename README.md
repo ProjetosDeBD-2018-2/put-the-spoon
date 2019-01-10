@@ -1,5 +1,4 @@
 # Dashboard Put The Spoon
-[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
 <img src="https://github.com/jmontejr/dashboard-putthespoon/blob/master/assets/img/logo_putthespoon.png" width="500">
 
