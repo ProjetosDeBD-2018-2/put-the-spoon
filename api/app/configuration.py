@@ -14,7 +14,7 @@ class BaseConfig(object):
     '''
     DATABASE CONFIG
     '''
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', None)
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'mysql://root@localhost/putthespoon_dev')
 
     '''
     FLASK RESTPLUS CONFIG

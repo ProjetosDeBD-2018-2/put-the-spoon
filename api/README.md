@@ -4,13 +4,27 @@
 
 O projeto foi desenvolvido usando a versão `3.6.5` do Python.
 
-Para instalar as dependencias do projeto execute o comando:
+1. Antes de rodar o projeto é necessario subir o [banco do projeto](https://drive.google.com/file/d/1BJnbRitA4UF1svHUUz2Gv0jsIAYkYhlR/view?usp=sharing) no MySQl, execute o comando:
+
+```
+mysql -u root putthespoon_dev < backup_db.sql
+```
+
+Se você prefere utilizar o `MySQL Workbench`, relize os seguintes passos conectado no MySQL:
+
+..1 Selecione a opção `Data Import` e `Import from Disk`
+..2 Escolha a opção `Import from Self-Contained File`
+..3 Na opção `Schema to be Imported To` clique no botão `New` e coloque o nome do schema como `putthespoon_dev`
+..4 Clique em `Start Import`
+..5 Aguarde a operação ser finalizada
+
+2. Instalar as dependencias:
 
 ```
 pip install -r requirements.txt
 ```
 
-Para rodar o projeto execute o comando:
+3. Execute o comando para rodar o projeto:
 
 ```
 flask run --host=0.0.0.0
