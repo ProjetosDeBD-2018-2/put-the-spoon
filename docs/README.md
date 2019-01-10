@@ -1,4 +1,4 @@
-# Dashboard Put The Spoon
+# Put The Spoon - Dashboard 
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
 ### O que está incluso:
@@ -26,6 +26,10 @@ x_lbd_free/
 ├── glossario.html
 └── quem-somos.html
 ```
+
+### License
+
+Para executar o projeto abra o `index.html` no navegador.
 
 ### License
 
