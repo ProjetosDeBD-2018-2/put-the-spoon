@@ -122,7 +122,7 @@
                                 <div class="content">
                                        
                                     <div class="lead">
-                                        <p><strong>IES: </strong>R$ <span id="ascLabelTipo"></span></p>
+                                        <p><strong>IES: </strong><span id="ascLabelTipo"></span></p>
                                     </div>
                                     <div class="lead">
                                         <p><strong>Valor: </strong>R$ <span id="ascValorTipo"></span></p>
@@ -142,7 +142,7 @@
                                 <div class="content">
 
                                     <div class="lead">
-                                        <p><strong>IES: </strong>R$ <span id="descLabelTipo"></span></p>
+                                        <p><strong>IES: </strong><span id="descLabelTipo"></span></p>
                                     </div>
                                     <div class="lead">
                                         <p><strong>Valor: </strong>R$ <span id="descValorTipo"></span></p>
@@ -283,7 +283,7 @@
 
         var labels_nome = [];
         var series_valores = [];
-        var byDespesa = dados.slice(0);
+        /* var byDespesa = dados.slice(0);
 
         switch (order) {
             case 'asc':
@@ -303,9 +303,16 @@
             labels_nome.push(element.sigla_ies);
             series_valores.push(element.despesa_total);
 
+        }); */
+
+        dados.forEach(element => {
+
+            labels_nome.push(element.sigla_ies);
+            series_valores.push(element.despesa_total);
+
         });
 
-        $(".title-despesa").html(byDespesa[0].tipo_despesa);
+        $(".title-despesa").html(dados[0].tipo_despesa);
 
         var valor = 0;
         switch (order) {
@@ -319,7 +326,7 @@
 
         var label_ies;
 
-        byDespesa.forEach(elem => {
+        dados.forEach(elem => {
             if (elem.despesa_total == valor) {
                 label_ies = elem.nome_ies;
             }
