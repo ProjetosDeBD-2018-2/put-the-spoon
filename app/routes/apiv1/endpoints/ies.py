@@ -1,4 +1,4 @@
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, asc, desc
 from flask_restplus import Namespace, Resource
 
 from app.schemas.ies import Ies
@@ -54,9 +54,9 @@ class RelationshipExpensesAndRatings(Resource):
             )
 
         if (order == 'desc'):
-            query = query.order_by(Nota.igcContinuo).desc()
+            query = query.order_by(Nota.igcContinuo.desc())
         elif (order == 'asc'):
-            query = query.order_by(Nota.igcContinuo).asc()
+            query = query.order_by(Nota.igcContinuo.asc())
         else:
             return ies.abort(400)
 
