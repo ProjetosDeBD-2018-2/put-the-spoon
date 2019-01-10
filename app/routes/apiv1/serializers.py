@@ -29,12 +29,8 @@ expense_by_type = Model('ExpenseByType', {
 })
 
 expenses_and_ratings = Model('ExpensesAndRatings', {
-    'idIes': fields.Integer,
     'nome_ies': fields.String,
-    'idNota': fields.Integer,
     'igcContinuo': fields.String,
-    'idTipoDespesa': fields.String,
-    'tipo_despesa': fields.String,
     'DespesaTotal': fields.Float
 })
 

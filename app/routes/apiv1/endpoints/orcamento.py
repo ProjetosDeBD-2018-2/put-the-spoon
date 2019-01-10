@@ -16,7 +16,7 @@ orcamento = Namespace('Orcamento')
 class HighestExpenseByType(Resource):
     @orcamento.marshal_list_with(expense_and_budget)
     @orcamento.doc(responses={400: 'Invalid input'})
-    def get(self, year, order):
+    def get(self, year, order='desc'):
         subquery = \
             Orcamento.query.with_entities(
                 Despesas.idIes,

@@ -33,39 +33,87 @@ class GetAllIes(Resource):
         return result
 
 
-@ies.route('/RelationshipExpensesAndRatings/<int:year>')
+@ies.route('/RelationshipExpensesAndRatings/<int:year>/<string:order>')
 class RelationshipExpensesAndRatings(Resource):
     @ies.marshal_list_with(expenses_and_ratings)
-    def get(self, year):
-        result = \
+    def get(self, year, order):
+        query = \
             Ies.query.with_entities(
-                Nota.idIes,
                 Ies.nome_ies,
-                Nota.idNota,
                 Nota.igcContinuo,
-                Despesas.idTipoDespesa,
-                TipoDespesa.tipo_despesa,
-                func.avg(Rubrica.valor_pago_reais).label('DespesaTotal')
+                func.sum(Rubrica.valor_pago_reais).label('DespesaTotal')
             ).filter(
                 Despesas.id == Rubrica.id_despesa,
                 Despesas.idIes == Nota.idIes,
                 Nota.idIes == Ies.cod_ies,
-                TipoDespesa.id == Despesas.idTipoDespesa,
                 Nota.anoNota == year,
                 Despesas.ano_mes_lancamento.like(f"{year}%")
             ).group_by(
-                Nota.idIes,
                 Ies.nome_ies,
-                Nota.idNota,
                 Nota.igcContinuo,
-                Despesas.idTipoDespesa,
-                TipoDespesa.tipo_despesa
-            ).all()
+            )
 
+        if (order == 'desc'):
+            query = query.order_by(func.sum(Rubrica.valor_pago_reais).desc())
+        elif (order == 'asc'):
+            query = query.order_by(func.sum(Rubrica.valor_pago_reais).asc())
+        else:
+            return ies.abort(400)
+
+        result = query.all()
         serialized_schema = ExpensesAndRatingsSchema(many=True)
         output = serialized_schema.dump(result).data
         return output
 
+"""
+@ies.route('/Expense/<int:year>/<int:typex>/<string:order>')
+class ExpenseBy(Resource):
+    def get(self, year, typex, order):
+        subquery = \
+            Despesas.query.with_entities(
+                Despesas.idTipoDespesa,
+                TipoDespesa.tipo_despesa,
+                Despesas.idIes,
+                func.sum(Rubrica.valor_pago_reais).label('despesa_total')
+            ).filter(
+                Despesas.id == Rubrica.id_despesa,
+                Despesas.idTipoDespesa == TipoDespesa.id,
+                Despesas.idTipoDespesa == typex,
+                Despesas.ano_mes_lancamento.like(f"{year}%")
+            ).group_by(
+                Despesas.idIes,
+                Despesas.idIes
+            )
+
+        if (order == 'desc'):
+            query = \
+                subquery.order_by(
+                    func.sum(Rubrica.valor_pago_reais
+                ).desc()).subquery('subquery')
+        elif (order == 'asc'):
+            query = \
+                subquery.order_by(
+                    func.sum(Rubrica.valor_pago_reais
+                ).asc()).subquery('subquery')
+        else:
+            return ies.abort(400)
+
+        query = \
+            Ies.query.with_entities(
+                subquery.columns.idTipoDespesa,
+                subquery.columns.tipo_despesa,
+                Ies.nome_ies,
+                Ies.sigla_ies,
+                subquery.columns.despesa_total
+            ).filter(
+                subquery.columns.idIes == 
+            )
+
+        result = query.all()
+        serialized_schema = HighestExpenseByTypeDespesa(many=True)
+        output = serialized_schema.dump(result).data
+        return output
+"""
 
 @ies.route('/ExpenseByType/<int:year>/<int:typex>/<string:order>')
 class ExpenseByType(Resource):

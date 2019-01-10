@@ -1,6 +1,6 @@
 import os
 
-from flask import Blueprint, config
+from flask import Blueprint
 from flask_restplus import Api
 
 from .endpoints.ies import ies
@@ -20,7 +20,8 @@ default_title = 'Put The Spoon API'
 default_version = '1.0'
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api/1')
-api = Api(api_v1,
+api = Api(
+    api_v1,
     title=os.getenv('TITLE', default_title),
     version=os.getenv('VERSION', default_version)
 )
