@@ -54,9 +54,9 @@ class RelationshipExpensesAndRatings(Resource):
             )
 
         if (order == 'desc'):
-            query = query.order_by(func.sum(Rubrica.valor_pago_reais).desc())
+            query = query.order_by(Nota.igcContinuo).desc()
         elif (order == 'asc'):
-            query = query.order_by(func.sum(Rubrica.valor_pago_reais).asc())
+            query = query.order_by(Nota.igcContinuo).asc()
         else:
             return ies.abort(400)
 
