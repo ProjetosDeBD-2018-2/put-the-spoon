@@ -27,9 +27,9 @@ x_lbd_free/
 └── quem-somos.html
 ```
 
-### License
+### Como rodar o projeto:
 
-Para executar o projeto abra o `index.html` no navegador.
+É somente necessario abri o  arquivo `index.html` no navegador.
 
 ### License
 

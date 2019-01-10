@@ -4,13 +4,19 @@
 
 O projeto foi desenvolvido usando a versão `3.6.5` do Python.
 
-Para instalar as dependencias do projeto execute o comando:
+1. Antes de rodar o projeto é necessario subir o [banco do projeto] no MySQl(https://drive.google.com/file/d/1BJnbRitA4UF1svHUUz2Gv0jsIAYkYhlR/view?usp=sharing), execute o comando:
+
+```
+mysql -u root putthespoon_dev < backup_db.sql
+```
+
+2. Instalar as dependencias:
 
 ```
 pip install -r requirements.txt
 ```
 
-Para rodar o projeto execute o comando:
+3. Execute o comando para rodar o projeto:
 
 ```
 flask run --host=0.0.0.0
