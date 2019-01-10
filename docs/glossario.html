@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/spoon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Put The Spoon</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-4.jpg"> -->
+        <div class="sidebar" data-color="purple">
+
+            <!--
+        
+                Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+                Tip 2: you can also add an image using data-image tag
+
+            -->
+
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="index.html" class="simple-text">
+                        <img src="assets/img/logo_putthespoon_w.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+
+                <ul class="nav">
+                    <li>
+                        <a href="index.html">
+                            <i class="pe-7s-graph"></i>
+                            <p>Painel</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="glossario.html">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Glossário</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quem-somos.html">
+                            <i class="pe-7s-user"></i>
+                            <p>Quem Somos</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ProjetosDeBD-2018-2/put-the-spoon" target="_blank">
+                            <i class="fa fa-github"></i>
+                            <p>Github</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="glossario.html">GLOSSÁRIO</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="header">
+                                    <div class="col-md-8">
+                                        <h4 class="title">Dicionário de Dados</h4>
+                                        <p class="category">Confira aqui a descrição de cada item do Put The Spoon</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="search" class="form-control input-search" placeholder="Digite o que você procura aqui"  alt="pesquisa-dinamica">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="content table-responsive ">
+                                    <table class="table table-hover table-bordered pesquisa-dinamica">
+                                        <thead>
+                                            <th width= "130">Nome</th>
+                                            <th>Descrição</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>IES</td> <!-- Nome -->
+                                                <td>Instituição de Ensino Superior</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>IGC</td> <!-- Nome -->
+                                                <td>O Índice Geral de Cursos Avaliados da Instituição (IGC) é um indicador de qualidade que avalia as Instituições de Educação Superior. </td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>MEC</td> <!-- Nome -->
+                                                <td>Ministério da educação</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td >Orçamento Total</td> <!-- Nome -->
+                                                <td>Para as consultas que retornam orçamento total, foi utilizado a coluna orçamento atualizado, que por sua vez corresponde ao orçamento inicial atualizado por alterações nas despesas.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>Despesa Total</td> <!-- Nome -->
+                                                <td>Para as consultas que retornam despesa total, foi utilizado a coluna valor pago reais, que por sua vez corresponde ao resultante do estágio de pagamento da despesa. O último estágio consiste na entrega de numerário ao credor. Nessa fase, a autoridade competente determina que a despesa que foi liquidada seja paga. Esse pagamento normalmente é efetuado por meio de crédito em conta bancária do favorecido.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>Tipo de despesa: Pessoal e encargos sociais</td> <!-- Nome -->
+                                                <td>Despesa com o pagamento pelo efetivo serviço exercido de cargo/emprego ou função no setor público, quer civil ou militar, ativo ou inativo, bem como as obrigações de responsabilidade do empregador.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>Tipo de despesa: Outras despesas correntes</td> <!-- Nome -->
+                                                <td>Despesas com aquisição de material de consumo, pagamento de diárias, contribuições, subvenções, auxílio-alimentação, auxílio-transporte, além de outras despesas de categoria econômica "Despesas Correntes" não classificáveis.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                            <tr>
+                                                <td>Tipo de despesa: Investimentos</td> <!-- Nome -->
+                                                <td>Despesas com dotações para o planejamento e a execução de obras, inclusive as destinadas à aquisição de imóveis considerados necessários à realização dessas, bem como para os programas especiais de trabalho, auisição de instalações, equipamentos e material permanente e constituição ou aumento de capital de empresas que não sejam de caráter comercial ou financeiro.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+
+                                            <tr>
+                                                <td>Tipo de despesa: Inversões financeiras</td> <!-- Nome -->
+                                                <td>Despesas com dotações destinadas à aquisição de imóveis ou bens de capital já em utilização, à aquisição de títulos representativos do capital de empresas ou entidades de qualquer espécie, já constituídas, quando a operação não importe aumento de capital; e à constituição ou aumento de capital de entidades ou empresas que visem aos objetos comerciais ou financeiros, inclusive operações bancárias ou de seguros.</td> <!-- Descrição -->
+                                                
+                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        Put The Spoon - todos os direitos reservados |
+                        Modelo de
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="http://www.creative-tim.com">Creative Tim</a>
+                    </p>
+                </div>
+            </footer>
+
+
+        </div>
+    </div>
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Search Table Dinamic -->
+<script src="assets/js/searchTable.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+
+</html>
