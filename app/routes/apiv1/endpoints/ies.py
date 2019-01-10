@@ -66,7 +66,7 @@ class RelationshipExpensesAndRatings(Resource):
         return output
 
 
-@ies.route('/Expense/<int:year>/<int:typex>/<string:order>')
+@ies.route('/ExpenseByType/<int:year>/<int:typex>/<string:order>')
 class ExpenseBy(Resource):
     @ies.marshal_list_with(expense_by_type)
     @ies.doc(responses={400: 'Invalid input'})
