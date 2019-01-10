@@ -33,14 +33,14 @@ x_lbd_free/
 
 ### Observação:
 
-O projeto no repositório está configurado para utilizar o backend rodando em `localhost`, para mudar o endereço para o remoto é necessario acessar o arquivo `./assests/js/consultas.js` e na parte:
+O projeto no repositório está configurado para utilizar o backend rodando `remoto`, para mudar o endereço para localhost é necessario acessar o arquivo `./assests/js/consultas.js` e na parte:
 
 ```
 {
 
-    // urlDefault: "https://putthespoon-api.herokuapp.com/api/1",
+    urlDefault: "https://putthespoon-api.herokuapp.com/api/1",
 
-    urlDefault: "http://localhost:5000/api/1",
+    // urlDefault: "http://localhost:5000/api/1",
 
     getUrl: function (url, arg1 = null, arg2 = null, arg3 = null){
         var url_complete = Consultas.urlDefault + url;
@@ -60,7 +60,7 @@ O projeto no repositório está configurado para utilizar o backend rodando em `
     }
 ```
 
-Descomentar `urlDefault: "https://putthespoon-api.herokuapp.com/api/1"` removendo o `//` e comentar `urlDefault: "http://localhost:5000/api/1"` adicionando `//` no inicio da variavel. 
+Descomentar `urlDefault: "http://localhost:5000/api/1"` removendo o `//` e comentar `urlDefault: "https://putthespoon-api.herokuapp.com/api/1"` adicionando `//` no inicio da variavel. 
 
 Para fazer essa alteracao pode ser utilizado qualquer editor de texto plano.
 

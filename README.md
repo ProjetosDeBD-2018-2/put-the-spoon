@@ -10,7 +10,7 @@ O Put The Spoon é um projeto de cunho social desenvolvido para a disciplina Pro
 
 + [Put The Spoon - Dashboard Online](https://projetosdebd-2018-2.github.io/put-the-spoon/)
 + [Put The Spoon - Flask API Rest Online](https://putthespoon-api.herokuapp.com/api/1/)
-+ [Documentaçã do Projeto](https://drive.google.com/drive/folders/1zdNyw8oUv7GKtU6Rt2QXjxhp4U7ZjTNq?usp=sharing)
++ [Documentação do Projeto](https://drive.google.com/drive/folders/1zdNyw8oUv7GKtU6Rt2QXjxhp4U7ZjTNq?usp=sharing)
 
 ## Como rodar cada projeto
 

@@ -1,8 +1,8 @@
 Consultas = {
 
-    // urlDefault: "https://putthespoon-api.herokuapp.com/api/1",
+    urlDefault: "https://putthespoon-api.herokuapp.com/api/1",
 
-    urlDefault: "http://localhost:5000/api/1",
+    // urlDefault: "http://localhost:5000/api/1",
 
     getUrl: function (url, arg1 = null, arg2 = null, arg3 = null){
         var url_complete = Consultas.urlDefault + url;
